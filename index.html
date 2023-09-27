@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="tx-calculator.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Include jQuery UI CSS for styling (optional) -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <title>TX R&R Calculator</title>
+  </head>
+  <body>
+    <div class="table-block-group">
+      <table>
+        <tr>
+          <th colspan="2">Electrical Project</th>
+        </tr>
+        <tr>
+          <td><p>Outlets</p></td>
+          <td>
+            <input
+              class="form-calculator"
+              type="number"
+              name="outlets"
+              id="outlets"
+              min="2"
+              title="Minimum of 2"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Outlets (GFCI)</p></td>
+          <td>
+            <input
+              class="form-calculator"
+              type="number"
+              name="outlets-gfci"
+              id="outletsGfci"
+              min="2"
+              title="Minimum of 2"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Switches</p>
+          </td>
+          <td>
+            <input
+              class="form-calculator"
+              type="number"
+              name="switches"
+              id="switches"
+              min="2"
+              title="Minimum of 2"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Install Standard Doorbell</p></td>
+          <td>
+            <input
+              type="checkbox"
+              name="install-standard-doorbell"
+              id="installStandardDoorbell"
+              value="50"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Install Video Doorbell</p></td>
+          <td>
+            <input
+              type="checkbox"
+              name="install-video-doorbell"
+              id="installVideoDoorbell"
+              value="125"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Ceilling Fan</p></td>
+          <td>
+            <input
+              type="checkbox"
+              name="ceilling-fan"
+              id="ceillingFan"
+              value="175"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Interior Light Fixture</p></td>
+          <td>
+            <input
+              type="checkbox"
+              name="interior-light-fixture"
+              id="interiorLightFixture"
+              value="80"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Light Conversion</p></td>
+          <td>
+            <input
+              type="checkbox"
+              name="light-conversion"
+              id="lightConversion"
+              value="20"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Remove existing light replace with led flush mount light</p>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              name="remove-replace-existing-light"
+              id="removeReplaceExistingLight"
+              value="100"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Exterior Light Fixture - Low</p>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              name="exterior-light-fixture-low"
+              id="exteriorLightFixtureLow"
+              value="85"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Exterior Light Fixture - High</p>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              name="exterior-light-fixture-high"
+              id="exteriorLightFixtureLow"
+              value="135"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Mount Bracket & Install TV</p>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              name="mount-bracket-install-tv"
+              id="mountBracketInstallTv"
+              value="150"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Chandelier</p>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              name="chandelier"
+              id="chandelier"
+              value="175"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Total for Electrical</p>
+          </td>
+          <td>
+            <input
+              class="form-calculator"
+              type="number"
+              name="electric-total"
+              id="electricTotal"
+              value=""
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Include jQuery UI (including the tooltip widget) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Initialize tooltips for elements with a title attribute within the table
+        $("table [title]").tooltip({
+          // Options go here (e.g., position, delay, etc.)
+          position: {
+            my: "left top",
+            at: "right top",
+          },
+          delay: 1, // Delay in milliseconds before showing the tooltip
+        });
+      });
+    </script>
+    <script src="tx-calculator.js"></script>
+  </body>
+</html>
