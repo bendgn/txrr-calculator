@@ -155,3 +155,38 @@ $('.form-calculator, input[type="checkbox"]').on(
 // Initialize the total on page load
 calculateTotalPlumbing();
 // End of Plumbing
+
+// HVAC
+// Function to calculate the total HVAC cost
+function calculateTotalHVAC() {
+  // Get the values from the input elements and checkboxes
+  var replaceAirReturnValue = $("#replaceAirReturnWithNewReturn").is(":checked")
+    ? 120
+    : 0;
+  var changeThermostatValue = $("#changeThermostat").is(":checked") ? 125 : 0;
+
+  // Get the value from the number input element with minimum requirement
+  var cleanPaintCaulkAirVentValue =
+    parseFloat($("#cleanPaintCaulkAirVent").val()) || 0;
+
+  // Calculate the total HVAC cost
+  var totalHVAC = (
+    replaceAirReturnValue +
+    changeThermostatValue +
+    cleanPaintCaulkAirVentValue * 30
+  ).toFixed(2);
+
+  // Update the total in the HVACTotal input
+  $("#HVACTotal").val(totalHVAC);
+}
+
+// Attach an event listener to each input and checkbox to recalculate the total when they change
+$('.form-calculator, input[type="checkbox"]').on(
+  "input change",
+  calculateTotalHVAC
+);
+
+// Initialize the total on page load
+calculateTotalHVAC();
+
+// End of HVAC
