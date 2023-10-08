@@ -69,3 +69,89 @@ $(document).ready(function () {
   // Initialize the total on page load
   calculateTotalElectrical();
 });
+// End of Electrical
+
+// Plumbing
+// Function to calculate the total plumbing cost
+function calculateTotalPlumbing() {
+  // Get the values from the input elements and checkboxes
+  var waterHeaterFirstFloorValue = $("#waterHeaterFirstFloor").is(":checked")
+    ? 400
+    : 0;
+  var waterHeaterAttickValue = $("#waterHeaterAttick").is(":checked") ? 600 : 0;
+  var toiletFlangeAndOrWaxRingValue = $("#toiletFlangeAndOrWaxRing").is(
+    ":checked"
+  )
+    ? 150
+    : 0;
+  var toiletFirstFloorValue = $("#toiletFirstFloor").is(":checked") ? 150 : 0;
+  var toiletSecondFloorValue = $("#toiletSecondFloor").is(":checked") ? 200 : 0;
+  var toiletWaterHeaterDisposalValue = $("#toiletWaterHeaterDisposal").is(
+    ":checked"
+  )
+    ? 75
+    : 0;
+  var exchangeToiletFlushKitValue = $("#exchangeToiletFlushKit").is(":checked")
+    ? 100
+    : 0;
+  var flushACDrainLineValue = $("#flushACDrainLine").is(":checked") ? 150 : 0;
+  var flushWaterHeaterValue = $("#flushWaterHeater").is(":checked") ? 150 : 0;
+  var kitchenFaucetAssemblyValue = $("#kitchenFaucetAssembly").is(":checked")
+    ? 150
+    : 0;
+  var bathroomFaucetAssemblyValue = $("#bathroomFaucetAssembly").is(":checked")
+    ? 125
+    : 0;
+  var garbageDisposalValue = $("#garbageDisposal").is(":checked") ? 115 : 0;
+  var dishwasherValue = $("#dishwasher").is(":checked") ? 150 : 0;
+  var underKitchenSinkDrainLineLeakRepairValue = $(
+    "#underKitchenSinkDrainLineLeakRepair"
+  ).is(":checked")
+    ? 150
+    : 0;
+  var underBathroomSinkDrainLineLeakRepairValue = $(
+    "#underBathroomSinkDrainLineLeakRepair"
+  ).is(":checked")
+    ? 150
+    : 0;
+
+  // Get the values from the number input elements with minimum requirements
+  var pressureWashValue =
+    parseFloat($("#pressureWashDriveWalkWaysPatios").val()) || 0;
+  var shutOffValvesValue =
+    parseFloat($("#replaShutOffValvesInteriorForSinkToiletsEtc").val()) || 0;
+
+  // Calculate the total plumbing cost
+  var totalPlumbing = (
+    waterHeaterFirstFloorValue +
+    waterHeaterAttickValue +
+    toiletFlangeAndOrWaxRingValue +
+    toiletFirstFloorValue +
+    toiletSecondFloorValue +
+    toiletWaterHeaterDisposalValue +
+    exchangeToiletFlushKitValue +
+    flushACDrainLineValue +
+    flushWaterHeaterValue +
+    kitchenFaucetAssemblyValue +
+    bathroomFaucetAssemblyValue +
+    garbageDisposalValue +
+    dishwasherValue +
+    underKitchenSinkDrainLineLeakRepairValue +
+    underBathroomSinkDrainLineLeakRepairValue +
+    pressureWashValue * 0.3 +
+    shutOffValvesValue * 30
+  ).toFixed(2);
+
+  // Update the total in the plumbingTotal input
+  $("#plumbingTotal").val(totalPlumbing);
+}
+
+// Attach an event listener to each input and checkbox to recalculate the total when they change
+$('.form-calculator, input[type="checkbox"]').on(
+  "input change",
+  calculateTotalPlumbing
+);
+
+// Initialize the total on page load
+calculateTotalPlumbing();
+// End of Plumbing
