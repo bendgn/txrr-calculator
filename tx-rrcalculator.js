@@ -402,6 +402,70 @@ $(document).ready(function () {
 
   // Initialize the total on page load
   calculateTotalHomeHardware();
-
   // End of Home Hardware Project
+
+  // Exterior / Roof / Windows / Siding project
+  function calculateTotalExteriorRoofWindowsSiding() {
+    // Get the values from the number input elements and checkboxes
+    var fasciaValue = parseFloat($("#fascia").val()) || 0;
+    var fasciaWithTrimValue = parseFloat($("#fasciaWithTrim").val()) || 0;
+    var soffitValue = parseFloat($("#soffit").val()) || 0;
+    var deckingValue = parseFloat($("#decking").val()) || 0;
+    var yr30ShinglesValue = parseFloat($("#30YrShingles").val()) || 0;
+
+    var sealVentsAndNailPopsAndChimneyForVentsValue =
+      parseFloat($("#sealVentsAndNailPopsAndChimneyForVents").val()) || 0;
+    var sealVentsAndNailPopsAndChimneyForNailPopsValue =
+      parseFloat($("#sealVentsAndNailPopsAndChimneyForNailPops").val()) || 0;
+    var sealVentsAndNailPopsAndChimneyForChimneyValue =
+      parseFloat($("#sealVentsAndNailPopsAndChimneyForChimney").val()) || 0;
+
+    var cleanGuttersValue = parseFloat($("#cleanGutters").val()) || 0;
+    var singleWindowsValue = $("#singleWindows").is(":checked") ? 500 : 0;
+    var replaceNonOpeningWindowGlassValue =
+      parseFloat($("#replaceNonOpeningWindowGlass").val()) || 0;
+    var demoExistingSidingAndReplaceWithHardieSidingValue = $(
+      "#demoExistingSidingAndReplaceWithHardieSiding"
+    ).is(":checked")
+      ? 12
+      : 0;
+    var exteriorPaintValue = $("#exteriorPaint").is(":checked") ? 3.5 : 0;
+    var woodRotRepairValue = parseFloat($("#woodRotRepair").val()) || 0;
+    var plywoodRepairValue = parseFloat($("#plywoodRepair").val()) || 0;
+    var caulkWindowsValue = parseFloat($("#caulkWindows").val()) || 0;
+
+    // Calculate the total Exterior / Roof / Windows / Siding cost
+    var totalExteriorRoofWindowsSiding = (
+      fasciaValue * 5 +
+      fasciaWithTrimValue * 6 +
+      soffitValue * 5 +
+      deckingValue * 4 +
+      yr30ShinglesValue * 12 +
+      sealVentsAndNailPopsAndChimneyForVentsValue * 40 +
+      sealVentsAndNailPopsAndChimneyForNailPopsValue * 6 +
+      sealVentsAndNailPopsAndChimneyForChimneyValue * 60 +
+      cleanGuttersValue * 1 +
+      singleWindowsValue +
+      replaceNonOpeningWindowGlassValue +
+      demoExistingSidingAndReplaceWithHardieSidingValue +
+      exteriorPaintValue +
+      woodRotRepairValue * 10 +
+      plywoodRepairValue * 2.5 +
+      caulkWindowsValue * 2
+    ).toFixed(2);
+
+    // Update the total in the exteriorRoofWindowsSidingTotal input
+    $("#exteriorRoofWindowsSidingTotal").val(totalExteriorRoofWindowsSiding);
+  }
+
+  // Attach an event listener to each input and checkbox to recalculate the total when they change
+  $('.form-calculator, input[type="checkbox"], select').on(
+    "input change",
+    calculateTotalExteriorRoofWindowsSiding
+  );
+
+  // Initialize the total on page load
+  calculateTotalExteriorRoofWindowsSiding();
+
+  // End of Exterior / Roof / Windows / Siding project
 }); // end of jquery
