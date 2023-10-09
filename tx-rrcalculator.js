@@ -528,6 +528,46 @@ $(document).ready(function () {
   // End of Drywall Project
 
   // Kitchen Cabinet Project
+  // Function to calculate the total Kitchen Cabinet cost
+  function calculateTotalKitchenCabinet() {
+    // Get the values from the input elements, checkboxes, and select elements
+    var kitchenCabinetInstallValue =
+      parseFloat($("#kitchenCabinetInstall").val()) || 0;
+    var kitchenCabinetAssembleValue =
+      parseFloat($("#kitchenCabinetAssemble").val()) || 0;
+    var kitchenBacksplashValue = parseFloat($("#kitchenBacksplash").val()) || 0;
+    var exchangeToiletSeatValue = $("#exchangeToiletSeat").is(":checked")
+      ? 25
+      : 0;
+    var bathVanityWithTopValue = parseFloat($("#bathVanityWithTop").val()) || 0;
+    var bathroomHardwareSetValue = $("#bathroomHardwareSet").is(":checked")
+      ? 25
+      : 0;
+    var bathMirrorValue = parseFloat($("#bathMirror").val()) || 0;
+
+    // Calculate the total Kitchen Cabinet cost
+    var totalKitchenCabinet = (
+      kitchenCabinetInstallValue * 30 +
+      kitchenCabinetAssembleValue * 70 +
+      kitchenBacksplashValue +
+      exchangeToiletSeatValue +
+      bathVanityWithTopValue +
+      bathroomHardwareSetValue +
+      bathMirrorValue
+    ).toFixed(2);
+
+    // Update the total in the kitchenCabinetTotal input
+    $("#kitchenCabinetTotal").val(totalKitchenCabinet);
+  }
+
+  // Attach input, checkbox, and select change event listeners to recalculate the total when they change
+  $('.form-calculator, input[type="checkbox"], select').on(
+    "input change",
+    calculateTotalKitchenCabinet
+  );
+
+  // Initialize the total on page load
+  calculateTotalKitchenCabinet();
 
   // End of Kitchen Cabinet Project
 }); // end of jquery
