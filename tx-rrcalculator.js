@@ -293,4 +293,57 @@ $(document).ready(function () {
   // Initialize the total on page load
   calculateTotalDoors();
   //end of Doors
+
+  // Landscaping Project
+  // Function to calculate the total landscaping/pools cost
+  function calculateTotalLandscapingPools() {
+    // Get the values from the input elements and checkboxes
+    var replaceBackFlowBellValue = $(
+      "#replaceLeakingBackFlowBellOnIrrigationSystem"
+    ).is(":checked")
+      ? 160
+      : 0;
+    var sprinklerHeadRepairValue = $("#sprinklerHeadRepair").is(":checked")
+      ? 45
+      : 0;
+    var shuttersValue = $("#shutters").is(":checked") ? 160 : 0;
+
+    // Get the values from the number input elements with minimum requirements
+    var hardScapeInstallationValue =
+      parseFloat($("#hardScapeInstallation").val()) || 0;
+    var fenceWeatherProtectStainSealValue = $(
+      "#fenceWeatherProtectStainSeal"
+    ).is(":checked")
+      ? 1.2
+      : 0;
+    var deckWeatherProtectStainSealValue =
+      parseFloat($("#deckWeatherProtectStainSeal").val()) || 0;
+    var replaceFencePicketsValue =
+      parseFloat($("#replaceFencePickets").val()) || 0;
+
+    // Calculate the total landscaping/pools cost
+    var totalLandscapingPools = (
+      replaceBackFlowBellValue +
+      sprinklerHeadRepairValue +
+      shuttersValue +
+      hardScapeInstallationValue * 4 +
+      fenceWeatherProtectStainSealValue +
+      deckWeatherProtectStainSealValue * 2.5 +
+      replaceFencePicketsValue * 15
+    ).toFixed(2);
+
+    // Update the total in the landscapingPoolsTotal input
+    $("#lanscapingPoolsTotal").val(totalLandscapingPools);
+  }
+
+  // Attach an event listener to each input and checkbox to recalculate the total when they change
+  $('.form-calculator, input[type="checkbox"]').on(
+    "input change",
+    calculateTotalLandscapingPools
+  );
+
+  // Initialize the total on page load
+  calculateTotalLandscapingPools();
+
+  // End of Landscaping Project
 }); // end of jquery
