@@ -346,4 +346,62 @@ $(document).ready(function () {
   calculateTotalLandscapingPools();
 
   // End of Landscaping Project
+
+  // Home Hardware Project
+  function calculateTotalHomeHardware() {
+    // Get the values from the input elements and checkboxes
+    var exchangeExistingInteriorDoorHardwareValue = $(
+      "#exchangeExistingInteriorDoorHardware"
+    ).is(":checked")
+      ? 25
+      : 0;
+    var exchangeExistingInteriorExteriorDoorHingesValue = $(
+      "#exchangeExistingInteriorExteriorDoorHinges"
+    ).is(":checked")
+      ? 25
+      : 0;
+    var exchangeExistingExteriorDoorHardwareValue = $(
+      "#exchangeExistingExteriorDoorHardware"
+    ).is(":checked")
+      ? 75
+      : 0;
+    var exchangeInstallWindowBlindsValue = $("#exchangeInstallWindowBlinds").is(
+      ":checked"
+    )
+      ? 50
+      : 0;
+    var installCurtainRodAndMountHardwareValue = $(
+      "#installCurtainRodAndMountHardware"
+    ).is(":checked")
+      ? 50
+      : 0;
+
+    // Get the selected value from the grab bar dropdown
+    var installGrabBarShowerBathTubValue =
+      parseFloat($("#installGrabBarShowerBathTub").val()) || 0;
+
+    // Calculate the total Home Hardware cost
+    var totalHomeHardware = (
+      exchangeExistingInteriorDoorHardwareValue +
+      exchangeExistingInteriorExteriorDoorHingesValue +
+      exchangeExistingExteriorDoorHardwareValue +
+      exchangeInstallWindowBlindsValue +
+      installCurtainRodAndMountHardwareValue +
+      installGrabBarShowerBathTubValue
+    ).toFixed(2);
+
+    // Update the total in the homeHardwareTotal input
+    $("#homeHardwareTotal").val(totalHomeHardware);
+  }
+
+  // Attach an event listener to each input, checkbox, and select to recalculate the total when they change
+  $('.form-calculator, input[type="checkbox"], select').on(
+    "input change",
+    calculateTotalHomeHardware
+  );
+
+  // Initialize the total on page load
+  calculateTotalHomeHardware();
+
+  // End of Home Hardware Project
 }); // end of jquery
