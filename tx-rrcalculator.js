@@ -529,5 +529,5 @@ $(document).ready(function () {
 
   // Kitchen Cabinet Project
 
-  // End of Kitchen Cabinet Projectddd
+  // End of Kitchen Cabinet Project
 }); // end of jquery
