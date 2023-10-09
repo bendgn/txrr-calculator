@@ -228,4 +228,69 @@ $(document).ready(function () {
   calculateTotalFlooring();
 
   // End of Flooring
+
+  // Doors Project
+  // Function to calculate the total Doors project cost
+  function calculateTotalDoors() {
+    // Get the values from the input elements and checkboxes
+    var closetRodValue = $("#closetRod").is(":checked") ? 30 : 0;
+    var exteriorSinglePreHungDoorValue = $("#exteriorSinglePreHungDoor").is(
+      ":checked"
+    )
+      ? 450
+      : 0;
+    var exteriorPreHungDoubleDoorsValue = $("#exteriorPreHungDoubleDoors").is(
+      ":checked"
+    )
+      ? 900
+      : 0;
+    var stainExteriorDoorValue = $("#stainExteriorDoor").is(":checked")
+      ? 200
+      : 0;
+    var frontDoorHandleValue = $("#frontDoorHandle").is(":checked") ? 45 : 0;
+    var slidingDoorInteriorValue = $("#slidingDoorInterior").is(":checked")
+      ? 800
+      : 0;
+    var frenchDoorInteriorValue = $("#frenchDoorInterior").is(":checked")
+      ? 300
+      : 0;
+    var interiorPreHungDoorValue = $("#interiorPreHungDoor").is(":checked")
+      ? 150
+      : 0;
+    var interiorDoorStopsValue = $("#interiorDoorStops").is(":checked") ? 5 : 0;
+    var biFoldDoorsValue = $("#biFoldDoors").is(":checked") ? 100 : 0;
+    var replaceAtticDoorValue = $("#replaceAtticDoor").is(":checked") ? 300 : 0;
+    var slidingClosetDoorsValue = $("#slidingClosetDoors").is(":checked")
+      ? 200
+      : 0;
+
+    // Calculate the total Doors project cost
+    var totalDoors = (
+      closetRodValue +
+      exteriorSinglePreHungDoorValue +
+      exteriorPreHungDoubleDoorsValue +
+      stainExteriorDoorValue +
+      frontDoorHandleValue +
+      slidingDoorInteriorValue +
+      frenchDoorInteriorValue +
+      interiorPreHungDoorValue +
+      interiorDoorStopsValue +
+      biFoldDoorsValue +
+      replaceAtticDoorValue +
+      slidingClosetDoorsValue
+    ).toFixed(2);
+
+    // Update the total in the doorsTotal input
+    $("#doorsTotal").val(totalDoors);
+  }
+
+  // Attach an event listener to each input and checkbox to recalculate the total when they change
+  $('.form-calculator, input[type="checkbox"]').on(
+    "input change",
+    calculateTotalDoors
+  );
+
+  // Initialize the total on page load
+  calculateTotalDoors();
+  //end of Doors
 }); // end of jquery
