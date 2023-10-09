@@ -525,6 +525,9 @@ $(document).ready(function () {
 
   // Initialize the total on page load
   calculateTotalDrywallAndPaint();
-
   // End of Drywall Project
+
+  // Kitchen Cabinet Project
+
+  // End of Kitchen Cabinet Project
 }); // end of jquery
