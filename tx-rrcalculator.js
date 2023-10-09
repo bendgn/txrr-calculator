@@ -607,8 +607,14 @@ $(document).ready(function () {
   // Function to calculate the overall total
   function calculateOverallTotal() {
     // Get the individual project totals and convert them to numbers
+    var electricTotal = parseFloat($("#electricTotal").val()) || 0;
+    var plumbingTotal = parseFloat($("#plumbingTotal").val()) || 0;
     var hvacTotal = parseFloat($("#HVACTotal").val()) || 0;
     var flooringTotal = parseFloat($("#flooringTotal").val()) || 0;
+    var doorsTotal = parseFloat($("#doorsTotal").val()) || 0;
+    var homeHardwareTotal = parseFloat($("#homeHardwareTotal").val()) || 0;
+    var lanscapingPoolsTotal =
+      parseFloat($("#lanscapingPoolsTotal").val()) || 0;
     var exteriorRoofWindowsSidingTotal =
       parseFloat($("#exteriorRoofWindowsSidingTotal").val()) || 0;
     var drywallAndPaintTotal =
@@ -619,8 +625,13 @@ $(document).ready(function () {
 
     // Calculate the overall total
     var overallTotal = (
+      electricTotal +
+      plumbingTotal +
       hvacTotal +
       flooringTotal +
+      doorsTotal +
+      homeHardwareTotal +
+      lanscapingPoolsTotal +
       exteriorRoofWindowsSidingTotal +
       drywallAndPaintTotal +
       kitchenCabinetTotal +
@@ -632,7 +643,7 @@ $(document).ready(function () {
   }
 
   // Attach an event listener to each project's input elements and checkboxes
-  $('.form-calculator, input[type="checkbox"]').on(
+  $('.form-calculator, input[type="checkbox"], select').on(
     "input change",
     calculateOverallTotal
   );
