@@ -468,4 +468,63 @@ $(document).ready(function () {
   calculateTotalExteriorRoofWindowsSiding();
 
   // End of Exterior / Roof / Windows / Siding project
+
+  // Drywall Project
+  function calculateTotalDrywallAndPaint() {
+    // Get the values from the number input elements
+    var scrapePopcornCeilingValue =
+      parseFloat($("#scrapePopcornCeiling").val()) || 0;
+    var sheetRockRepairWallValue =
+      parseFloat($("#sheetRockRepairWall").val()) || 0;
+    var sheetRockRepairCeilingValue =
+      parseFloat($("#sheetRockRepairCeiling").val()) || 0;
+    var drywallEntireRoomValue = parseFloat($("#drywallEntireRoom").val()) || 0;
+    var paintIntExtValue = parseFloat($("#paintIntExt").val()) || 0;
+    var paintTrimValue = parseFloat($("#paintTrim").val()) || 0;
+
+    // Get the values from the tile size options
+    var tile4x4Value =
+      parseFloat($("#tileWorkShowerBathroomFloorTileBackSplashByFour").val()) ||
+      0;
+    var tile6x6Value =
+      parseFloat($("#tileWorkShowerBathroomFloorTileBackSplashBySix").val()) ||
+      0;
+    var tile10x10Value =
+      parseFloat($("#tileWorkShowerBathroomFloorTileBackSplashByTen").val()) ||
+      0;
+    var tile12x12Value =
+      parseFloat(
+        $("#tileWorkShowerBathroomFloorTileBackSplashByTwelve").val()
+      ) || 0;
+    var tile12x24Value =
+      parseFloat(
+        $("#tileWorkShowerBathroomFloorTileBackSplashByTwentyFour").val()
+      ) || 0;
+
+    // Calculate the total Drywall and Paint cost
+    var totalDrywallAndPaint = (
+      scrapePopcornCeilingValue * 0.5 +
+      sheetRockRepairWallValue * 20 +
+      sheetRockRepairCeilingValue * 25 +
+      drywallEntireRoomValue * 250 +
+      paintIntExtValue * 1 +
+      paintTrimValue * 1 +
+      tile4x4Value * 14 +
+      tile6x6Value * 12.5 +
+      tile10x10Value * 10 +
+      tile12x12Value * 9 +
+      tile12x24Value * 7
+    ).toFixed(2);
+
+    // Update the total in the drywallAndPaintTotal input
+    $("#drywallAndPaintTotal").val(totalDrywallAndPaint);
+  }
+
+  // Attach an event listener to each input to recalculate the total when they change
+  $(".form-calculator").on("input", calculateTotalDrywallAndPaint);
+
+  // Initialize the total on page load
+  calculateTotalDrywallAndPaint();
+
+  // End of Drywall Project
 }); // end of jquery
