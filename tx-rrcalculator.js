@@ -570,4 +570,75 @@ $(document).ready(function () {
   calculateTotalKitchenCabinet();
 
   // End of Kitchen Cabinet Project
+
+  // Material Pick up Project
+  // Function to calculate the total Trash Haul / Material Pick Up cost
+  function calculateTotalTrashHaul() {
+    // Get the values from the checkboxes
+    var onePointFiveCubicYardTrashValue = $(
+      "#onePointFiveCubicYardTrashOneTruckFull"
+    ).is(":checked")
+      ? 175
+      : 0;
+    var dumpTrailerValue = $("#dumpTrailer").is(":checked") ? 500 : 0;
+    var materialDeliveryFeeValue = $("#materialDeliveryFee").is(":checked")
+      ? 100
+      : 0;
+
+    // Calculate the total Trash Haul / Material Pick Up cost
+    var totalTrashHaul = (
+      onePointFiveCubicYardTrashValue +
+      dumpTrailerValue +
+      materialDeliveryFeeValue
+    ).toFixed(2);
+
+    // Update the total in the trashHaulMaterialPickUpTotal input
+    $("#trashHaulMaterialPickUpTotal").val(totalTrashHaul);
+  }
+
+  // Attach checkbox change event listeners to recalculate the total when they change
+  $('input[type="checkbox"]').on("change", calculateTotalTrashHaul);
+
+  // Initialize the total on page load
+  calculateTotalTrashHaul();
+  // End of Material Pickup Project
+
+  // Overall total
+  // Function to calculate the overall total
+  function calculateOverallTotal() {
+    // Get the individual project totals and convert them to numbers
+    var hvacTotal = parseFloat($("#HVACTotal").val()) || 0;
+    var flooringTotal = parseFloat($("#flooringTotal").val()) || 0;
+    var exteriorRoofWindowsSidingTotal =
+      parseFloat($("#exteriorRoofWindowsSidingTotal").val()) || 0;
+    var drywallAndPaintTotal =
+      parseFloat($("#drywallAndPaintTotal").val()) || 0;
+    var kitchenCabinetTotal = parseFloat($("#kitchenCabinetTotal").val()) || 0;
+    var trashHaulMaterialPickUpTotal =
+      parseFloat($("#trashHaulMaterialPickUpTotal").val()) || 0;
+
+    // Calculate the overall total
+    var overallTotal = (
+      hvacTotal +
+      flooringTotal +
+      exteriorRoofWindowsSidingTotal +
+      drywallAndPaintTotal +
+      kitchenCabinetTotal +
+      trashHaulMaterialPickUpTotal
+    ).toFixed(2);
+
+    // Update the overall total in the "overAllTotal" span
+    $("#overAllTotal").text("$" + overallTotal);
+  }
+
+  // Attach an event listener to each project's input elements and checkboxes
+  $('.form-calculator, input[type="checkbox"]').on(
+    "input change",
+    calculateOverallTotal
+  );
+
+  // Initialize the overall total on page load
+  calculateOverallTotal();
+
+  // End of Overall total
 }); // end of jquery
