@@ -1404,10 +1404,11 @@
           <td>
             <input
               class="form-calculator"
-              type="checkbox"
+              type="number"
               name="kitchen-backsplash"
               id="kitchenBacksplash"
-              value="800"
+              minimum="800"
+              title="Minimum 800"
             />
           </td>
         </tr>
@@ -1426,13 +1427,11 @@
         <tr>
           <td><p>Bath Vanity with Top</p></td>
           <td>
-            <input
-              class="form-calculator"
-              type="checkbox"
-              name="bath-vanity-with-top"
-              id="bathVanityWithTop"
-              value="1"
-            />
+            <select name="bath-vanity-with-top" id="bathVanityWithTop">
+              <option value="">Select Options</option>
+              <option value="500">Single Sink</option>
+              <option value="800">Double Sink</option>
+            </select>
           </td>
         </tr>
         <tr>
@@ -1450,13 +1449,12 @@
         <tr>
           <td><p>Bath Mirror</p></td>
           <td>
-            <input
-              class="form-calculator"
-              type="checkbox"
-              name="bath-mirror"
-              id="bathMirror"
-              value="1"
-            />
+            <select name="bath-mirror" id="bathMirror">
+              <option value="">Select Options</option>
+              <option value="150">Small (24 Inch)</option>
+              <option value="200">Medium (48 Inch)</option>
+              <option value="350">Larger (Greater than 48 Inch)</option>
+            </select>
           </td>
         </tr>
         <tr>
